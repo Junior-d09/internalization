@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { locales } from '../../i18n';
-import '../globals.css'; 
-
+import '../globals.css';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -16,11 +15,13 @@ export function generateStaticParams() {
 }
 
 export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
-
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
     <html lang={locale}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

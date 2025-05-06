@@ -1,7 +1,3 @@
-
-
-
-
 'use client';
 
 import { useEffect } from 'react';
@@ -11,14 +7,23 @@ export default function RedirectToLocale() {
   const router = useRouter();
 
   useEffect(() => {
-    const browserLang = navigator.language;
-    // Vérification que la langue est soit 'en' soit 'fr'
-    const detectedLang = browserLang.startsWith('en') ? 'en' : 'fr';
-    if (['en', 'fr'].includes(detectedLang)) {
-      router.replace(`/${detectedLang}`);
+    // Vérifier d'abord s'il y a une préférence dans le localStorage
+    const savedLang = localStorage.getItem('preferredLanguage');
+    
+    if (savedLang && (savedLang === 'en' || savedLang === 'fr')) {
+      // Utiliser la langue sauvegardée si elle existe
+      router.replace(`/${savedLang}`);
     } else {
-      // Par défaut en français
-      router.replace('/fr');
+      // Sinon, récupérer la langue du navigateur
+      const browserLang = navigator.language.split('-')[0];
+      
+      // Rediriger vers la langue du navigateur si elle est supportée
+      if (browserLang === 'en' || browserLang === 'fr') {
+        router.replace(`/${browserLang}`);
+      } else {
+        // Sinon, utiliser le français par défaut
+        router.replace('/fr');
+      }
     }
   }, [router]);
 

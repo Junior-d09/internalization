@@ -1,6 +1,7 @@
 // i18n.ts
 export const locales = ['en', 'fr'] as const;
-export const defaultLocale = 'fr' as const;
+export const defaultLocale = 'fr';
+
 
 type Locale = (typeof locales)[number];
 
@@ -13,6 +14,7 @@ export default async function getMessages({
   const locale = requestLocale && locales.includes(requestLocale as Locale) 
     ? requestLocale as Locale 
     : defaultLocale;
+    
 
   // Utilisation de import dynamique pour charger le bon fichier de traduction
   try {

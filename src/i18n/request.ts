@@ -14,3 +14,4 @@ export default async function getRequestConfig({ locale }: { locale?: string }) 
     locales,
   };
 }
+
