@@ -1,6 +1,9 @@
 {
-  "title": "🌍 Bienvenue dans le monde de l'internationalisation",
+  "title": "Le monde de l'internationalisation 🌍",
   "description": "Tu navigues actuellement sur une page multilingue ! Grâce à Next.js et next-intl, tu peux afficher ton contenu dans plusieurs langues, offrant ainsi une meilleure expérience utilisateur à l’échelle mondiale.",
-  "footer": "💡 Astuce : proposer ton site en plusieurs langues permet de le rendre plus inclusif, accessible et professionnel."
+  "support": "💡 Astuce : proposer ton site en plusieurs langues permet de le rendre plus inclusif, accessible et professionnel.",
+  "email": "Email",
+  "contact": "Contact",
+  "realise": "Réalisé par junior_dfs"
 }
 

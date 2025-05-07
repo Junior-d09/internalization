@@ -2,90 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Définition du fond forcé en bleu clair quelle que soit la préférence système */
 :root {
-  --background: #ffffff;  /* Couleur de fond par défaut (clair) */
-  --foreground: #171717;  /* Couleur du texte par défaut (clair) */
-  --primary: #6200ea;     /* Couleur principale (par exemple, un violet) */
-  --secondary: #03dac6;   /* Couleur secondaire (par exemple, un cyan) */
-  --accent: #ff4081;      /* Couleur d'accent (par exemple, un rose) */
-  --border-color: #e0e0e0; /* Couleur des bordures */
-  --button-bg: var(--primary);
-  --button-text: #ffffff;
+  --background: #e0f2fe;  /* Fond bleu clair */
+  --foreground: #4f46e5;  /* Texte indigo */
+  --primary: #3b82f6;     /* Bleu primaire */
+  --secondary: #ec4899;   /* Rose pour les accents */
+  --border-color: #bfdbfe; /* Bordures bleu clair */
 }
 
+/* Pas de mode sombre - on conserve le même design */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a; /* Fond pour le mode sombre */
-    --foreground: #ededed;  /* Texte pour le mode sombre */
-    --primary: #bb86fc;     /* Couleur principale pour le mode sombre */
-    --secondary: #03dac6;
-    --accent: #ff4081;
-    --border-color: #444444; /* Bordure pour le mode sombre */
-    --button-bg: var(--primary);
-    --button-text: #000000;
+    /* Mêmes valeurs que le mode clair */
+    --background: #e0f2fe;
+    --foreground: #4f46e5;
+    --primary: #3b82f6;
+    --secondary: #ec4899;
+    --border-color: #bfdbfe;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-family: var(--font-geist-sans, 'Arial'), sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--accent);
-}
-
-/* Bordures personnalisées */
-.border {
-  border-color: var(--border-color);
-}
-
-/* Personnalisation des entrées et formulaires */
-input, textarea {
-  background-color: var(--background);
-  color: var(--foreground);
-  border: 1px solid var(--border-color);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-}
-
-input:focus, textarea:focus {
-  outline: 2px solid var(--primary);
-}
-
-/* Autres styles */
+/* Styles généraux */
 h1, h2, h3 {
   color: var(--foreground);
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
+select {
+  background-color: white;
+  color: #4b5563;
+  cursor: pointer;
 }
 
-h2 {
-  font-size: 1.75rem;
+/* Effet de survol sur certains éléments */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
-h3 {
-  font-size: 1.5rem;
+/* Transitions globales */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
 }
